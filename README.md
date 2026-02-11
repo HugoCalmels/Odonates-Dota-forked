@@ -7,7 +7,7 @@ Application web de gestion d’équipes et de matchs (projet d’apprentissage f
 
 Frontend encore accessible :  
 https://app.dota-arena.fr/home  
-(Authentication actuellement non fonctionnelle — projet non maintenu depuis 2024)
+(Authentication actuellement non fonctionnelle — projet non maintenu depuis fin 2024)
 
 ---
 
