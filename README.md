@@ -23,14 +23,14 @@ Angular · TypeScript · RxJS · NgRx
 
 ## Mon rôle
 
-Développement majoritaire du backend et participation au frontend.  
-Conception d’API sécurisée, gestion authentification, logique métier, base de données.
+Développement majoritaire backend et frontend.  
+Conception d’API sécurisée, gestion authentification, logique métier, base de données, création d'interfaces et formulaires.
 
 ---
 
 ## Fonctionnalités principales
 
-- Authentification OpenID + JWT
+- Authentification OpenID + JWT + cookies http-only
 - Gestion utilisateurs / équipes / matchs
 - Planification avec fuseaux horaires (UTC)
 - API REST sécurisée
