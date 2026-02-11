@@ -33,3 +33,6 @@ build/
 .vscode/
 .idea
 /src/main/resources/static/images/
+
+application-local.properties
+application-*.local.properties
