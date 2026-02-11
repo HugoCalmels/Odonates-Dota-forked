@@ -1,0 +1,173 @@
+@import '../../../../variables.scss';
+
+table {
+  width: 100%;
+  background-color: $primary-color-light;
+  opacity: .95;
+  color: white;
+}
+
+table th,
+td {
+  color: white;
+  height: 60px;
+}
+
+.team-page{
+  display:flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.team-details-container {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  position: relative;
+  align-items: flex-start;
+}
+
+.displayed-team{
+  flex:2 ;
+}
+
+.team-params-wrapper{
+  width: 100%;
+  flex: 1;
+  background-color: $primary-color-light;
+  padding: 15px;
+  display:flex;
+  flex-direction: column;
+}
+
+.team-btn-actions{
+  float: right;
+  padding: 0;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 15px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.team-btn-actions button{
+  background-color: $primary-color-light;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  transition: 0.1s;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.team-btn-actions button:hover{
+  background-color: $primary-hover-color
+}
+
+.team-user-avatar{
+  padding: 0;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.medal-image{
+  padding: 0;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+.bg-image__custom {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/bg-image-10.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.captain-badge{
+  height: 25px; 
+  width: 25px;
+  margin-left: 10px;
+  margin-top: -5px;
+}
+
+.kick-user-btn{
+  background-color: $alert-warning;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    transition: 0.1s;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 3px;
+    height: 30px;
+}
+
+.medal-container {
+  position: relative;
+  display: inline-block;
+}
+
+.leaderboard-rank {
+  position: absolute;
+  bottom: 5%; 
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px; 
+  font-weight: 500; 
+  color: white;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9); 
+  padding: 0px 7px; 
+  background-color: rgba(0, 0, 0, 0.66); 
+  border-radius: 4px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
+  letter-spacing: 1px;
+}
+
+.medal-label {
+  position: absolute;
+  top: 50%; 
+  left: 100%; 
+  transform: translate(10px, -50%); 
+  font-size: 10px;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.66); 
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px; 
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+  opacity: 0; 
+  transition: opacity 0.2s ease-in-out; 
+  pointer-events: none; 
+}
+
+.medal-container:hover .medal-label {
+  opacity: 1; 
+}
+
+.flag-icon {
+  width: 32px; 
+  height: 24px; 
+  margin-right: 8px;
+  vertical-align: middle;
+}

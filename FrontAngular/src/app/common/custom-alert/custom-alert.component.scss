@@ -1,0 +1,35 @@
+@import '../../../variables.scss';
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 200px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  z-index: 1000;
+  height: 40px;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: $alert-error;
+  border-radius: 4px;
+}
+
+.alert-container-btn-icon {
+  margin-right: 10px;
+  display:flex;
+  align-items:center;
+}
+
+.alert p {
+  margin: 0;
+  font-size: 1.15rem;
+}
+.alert span {
+  margin: 0;
+}

@@ -1,0 +1,78 @@
+@import '../../../../variables.scss';
+
+table {
+  width: 100%;
+  background-color: $primary-color;
+  opacity: .95;
+}
+
+table th,
+td {
+  color: white;
+  height: 60px;
+}
+
+.scrim-list-team-entity {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+}
+
+.scrim-list-team-entity img {
+  width: 50;
+  height: 50px;
+  display: flex;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.scrim-list-team-entity p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.preGameStatus-info {
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:7px;
+  border-radius: 3px;
+
+}
+
+.preGameStatus-info.joinable {
+  background-color: $alert-success;
+}
+
+.preGameStatus-info.full {
+  background-color: $grey-500;
+}
+
+.preGameStatus-info p {
+  margin: 0;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: #423E2A;
+}
+
+::ng-deep .mat-sort-header-arrow {
+color: white !important; 
+}
+
+
+.team-list-logo{
+  height: 50px; 
+  width: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}

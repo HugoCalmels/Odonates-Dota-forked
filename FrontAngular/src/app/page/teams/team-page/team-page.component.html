@@ -1,0 +1,108 @@
+<div class="page-header-custom">
+  <ng-container *ngIf="(visitedTeam$ | async) as visitedTeam; else noTeam">
+    <app-page-hero [pageTitle]="visitedTeam?.name" [teamLogo]="visitedTeam?.logo"></app-page-hero>
+  </ng-container>
+  
+  <ng-template #noTeam>
+    <ng-container *ngIf="alert$ | async as alert">
+      <app-page-hero [pageTitle]="'Team not found'"></app-page-hero>
+      <app-custom-alert *ngIf="alert.isVisible"
+                        [alertType]="alert.alertType"
+                        [message]="alert.message"
+                        (close)="alert.isVisible = false">
+      </app-custom-alert>
+    </ng-container>
+  </ng-template>
+
+  <div class="bg-image__custom"></div>
+  <div class="page-content">
+    <div *ngIf="(visitedTeam$ | async) as visitedTeam">
+      <div class="team-page">
+        <ng-container *ngIf="isAuthenticated$">
+          <div class="team-btn-actions">
+            <ng-container *ngIf="!hasOneTeam$">
+              <button (click)="openJoinTeamModal()">Join</button>
+            </ng-container>
+            <ng-container *ngIf="isVisitedTeamPlayer && !isVisitedTeamAdmin">
+              <button (click)="leaveTeam()">Leave</button>
+            </ng-container>
+            <ng-container *ngIf="isVisitedTeamAdmin">
+              <button (click)="openEditModal('edit', decryptedPassword)">Edit</button>
+              <button (click)="openDeleteModal()">Delete</button>
+            </ng-container>
+          </div>
+        </ng-container>
+        <div class="team-details-container">
+          <div class="displayed-team">
+            <!-- START TABLE -->
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+              <!-- Logo Column -->
+              <ng-container matColumnDef="logo">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <img class="team-user-avatar" [src]="element.avatar" alt="Avatar">
+                </td>
+              </ng-container>
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <span>{{element.userName}}</span>
+                  <ng-container *ngIf="isCaptain(element)">
+                    <img src="../assets/img/crown.png" alt="Captain Badge" class="captain-badge">
+                  </ng-container>
+                </td>
+              </ng-container>
+              <!-- MMR Column -->
+              <ng-container matColumnDef="mmr">
+                <th mat-header-cell *matHeaderCellDef> MMR </th>
+                <td mat-cell *matCellDef="let element">
+                  <div class="medal-container">
+                    <!-- Image de la médaille -->
+                    <img [src]="element | mmrEstimate" alt="Medal" class="medal-image">
+                    <!-- Label affiché uniquement au survol -->
+                    <div class="medal-label">
+                      {{ getMedalName(element.rankTier) }}
+                    </div>
+                    <!-- Rank affiché si le joueur est Immortal avec un leaderboard -->
+                    <span *ngIf="element.rankTier === 80 && element.leaderboardRank" class="leaderboard-rank">
+                      {{ element.leaderboardRank }}
+                    </span>
+                  </div>
+                </td>
+              </ng-container>
+              <!-- Country Column -->
+              <ng-container matColumnDef="country">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <span *ngIf="element.country">
+                    <span class="flag-icon flag-icon-{{ element.country.toLowerCase() }}"></span>
+                  </span>
+                  <span *ngIf="!element.country"></span>
+                </td>
+              </ng-container>
+              <!-- Actions Column -->
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef [hidden]="!isVisitedTeamAdmin"> Actions </th>
+                <td mat-cell *matCellDef="let element" [hidden]="!isVisitedTeamAdmin">
+                  <button *ngIf="element.roles.includes('ROLE_PLAYER')" (click)="kickPlayer(element)" class="kick-user-btn">
+                    KICK PLAYER
+                  </button>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <!-- END TABLE -->
+          </div>
+          <div class="team-params-wrapper">
+            <ng-container *ngIf="visitedTeam">
+              <app-team-parameters [isVisitedTeamAdmin]="isVisitedTeamAdmin"
+                [isVisitedTeamPlayer]="isVisitedTeamPlayer"></app-team-parameters>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

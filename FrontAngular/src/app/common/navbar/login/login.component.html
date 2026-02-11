@@ -1,0 +1,10 @@
+<div class="nav-item log">
+  <a class="nav-link log" *ngIf="!isAuthenticated" (click)="loginUser()" [ngStyle]="textColor">
+    <mat-icon svgIcon="steam-logo" class="nav-login-icon"></mat-icon>
+    LOGIN
+  </a>
+  <a class="nav-link log" *ngIf="isAuthenticated" (click)="logoutUser()" [ngStyle]="textColor">
+    <img [src]="user?.avatar" alt="User Avatar" class="navbar-user-avatar">
+    LOGOUT
+  </a>
+</div>

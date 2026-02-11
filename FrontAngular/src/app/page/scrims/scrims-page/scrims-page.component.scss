@@ -1,0 +1,69 @@
+@import '../../../../variables.scss';
+
+.app-scrim-list {
+  margin-bottom: 150px;
+}
+
+.scrims-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bg-image__custom {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/bg-image-9.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-background__custom {
+  position: absolute;
+  top: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background-color: rgba(6, 32, 56, 1);
+}
+
+.create-scrim-custom-btn {
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-color;
+  opacity: 0.95;
+  cursor: pointer;
+  transition: .1s;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+.create-scrim-custom-btn:hover {
+  background-color: $primary-hover-color;
+}
+
+.add-icon {
+  color: white;
+  transform: scale(1.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-scrim-custom-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}

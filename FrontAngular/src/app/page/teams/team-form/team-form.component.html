@@ -1,0 +1,57 @@
+<div class="team-form">
+
+  <div class="team-form-header">
+    <h4 class="tem-form-title">{{ mode === 'create' ? 'Create Team' : 'Edit Team' }}</h4>
+    <button (click)="closeDialog()">
+      <mat-icon  aria-hidden="false" aria-label="Close icon" [ngStyle]="{'color':'white'}">close</mat-icon>
+    </button>
+  </div>
+
+  <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="teamName">Team Name:</label>
+      <input type="text" class="form-control" id="teamName" formControlName="name">
+      <div *ngIf="teamForm.get('name')?.invalid && teamForm.get('name')?.touched" class="text-danger">
+        <small class="form-control-small" *ngIf="teamForm.get('name')?.errors?.['required']">Team Name is required.</small>
+        <small class="form-control-small" *ngIf="teamForm.get('name')?.errors?.['minlength']">Team Name too short..</small>
+        <small class="form-control-small" *ngIf="teamForm.get('name')?.errors?.['teamNameExists']">Team Name already exists.</small>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="teamPassword">Team Password:</label>
+      <input type="password" class="form-control" id="teamPassword" formControlName="password">
+      <div *ngIf="teamForm.get('password')?.invalid && (teamForm.get('password')?.dirty || teamForm.get('password')?.touched)" class="text-danger">
+        <small class="form-control-small" *ngIf="teamForm.get('password')?.errors?.['required']">Password is required.</small>
+        <small class="form-control-small" *ngIf="teamForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</small>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="teamLogo">Team Logo:</label>
+      <div class="form-custom-file-input-wrapper">
+        <button type="button"  (click)="logoInput.click()">Browse</button>
+        <input type="file" class="form-custom-input" id="teamLogo" (change)="onLogoSelected($event)" #logoInput>
+        <label class="form-custom-label" for="teamLogo" #logoLabel>No file chosen</label>
+      </div>
+      <div *ngIf="logoError" class="text-danger">
+        <small class="form-control-small">{{ logoError }}</small>
+      </div>
+    </div>
+  
+    <button 
+      type="submit" 
+      class="create-team__send-btn" 
+      [disabled]="submitting" 
+    >
+      <span *ngIf="!submitting">
+        {{ mode === 'create' ? 'CREATE TEAM' : 'EDIT TEAM' }}
+      </span>
+      <div class="custom-spinner">
+      <mat-spinner *ngIf="submitting" diameter="24" class="spinner"></mat-spinner> <!-- Loader -->
+      </div>
+    </button>
+  </form>
+  
+  </div>
+  

@@ -1,0 +1,9 @@
+package com.palladium46.odonatesdota.scrim.model.enums;
+
+public enum GameMode {
+    MID_ONLY_1V1,
+    MID_ONLY_2V2,
+    ALL_PICK_5V5,
+    CAPTAINS_MODE_5V5,
+    RANDOM_DRAFT_5V5
+}

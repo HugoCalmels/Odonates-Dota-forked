@@ -1,0 +1,7 @@
+<div class="join-team-modal-wrapper">
+    <h5>Join Team</h5>
+    <p>Enter team password to join.</p>
+    <p *ngIf="showErrorMessage" id="join-team-modal-error-message">Invalid password.</p>
+    <input [(ngModel)]="password" type="password" name="password">
+    <button (click)="submitTeamPassword()">Submit</button>
+</div>

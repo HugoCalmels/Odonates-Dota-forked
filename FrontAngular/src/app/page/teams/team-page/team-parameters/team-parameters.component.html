@@ -1,0 +1,17 @@
+<div class="team-infos-wrapper">
+  <h5>Team infos</h5>
+  <div class="team-info-text">
+    <p>Created at : {{visitedTeam?.createdAt | formatTeamDate }}</p>
+    <p>Captain : {{visitedTeam?.captain?.userName}}</p>
+    <p>Scrims played : {{scrimsPlayed }}</p>
+  </div>
+</div>
+
+<ng-container *ngIf="isVisitedTeamPlayer">
+  <div class="team-password-params">
+    <h5>Private section</h5>
+    <div class="team-password">
+      <p>Team Password : {{decryptedPassword}}</p>
+    </div>
+  </div>
+</ng-container>

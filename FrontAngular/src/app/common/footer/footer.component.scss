@@ -1,0 +1,13 @@
+.cgu-link {
+  cursor: pointer;
+  color: inherit; /* Garde la couleur du texte parent */
+}
+
+.cgu-link:hover {
+  text-decoration: underline;
+}
+
+.mat-dialog-content {
+  overflow-y: auto;
+  scroll-behavior: auto; /* Assurez-vous que le comportement de défilement est normal */
+}

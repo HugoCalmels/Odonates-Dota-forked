@@ -1,0 +1,103 @@
+@import '../../../../../variables.scss';
+
+.displayed-team-header h5 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.displayed-team-header h5:hover{
+  text-decoration: underline;
+}
+
+.displayed-team-header {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 15px;
+  max-width: max-content;
+}
+
+.displayed-team-container {
+  padding: 0;
+  background-color: $primary-color;
+  opacity: .95;
+}
+
+.displayed-team-logo {
+  padding: 0;
+  display: flex;
+  width: 67px;
+}
+
+.displayed-team-logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.displayed-user-logo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  background-color: $primary-color;
+  opacity: .9;
+}
+
+table th,
+td {
+  color: white;
+  height: 60px;
+}
+
+.clickable-row__team {
+  height: 45px;
+}
+
+.clickable-header__team {
+  height: 45px;
+}
+
+.displayed-team__label-1 {
+  width: 30px;
+}
+
+.steam-logo__collection {
+  position: relative;
+  z-index: 15;
+  padding: 0;
+  opacity: .75;
+  cursor: pointer;
+  transition: .1s;
+}
+
+.steam-logo__collection:hover {
+  opacity: .9;
+}
+
+::ng-deep {
+  .mat-column-userName {
+    width: 300px; 
+    min-width: 150px;
+    max-width: 350px; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.captain-badge{
+  height: 25px; 
+  width: 25px;
+  margin-left: 10px;
+  margin-top: -5px;
+}

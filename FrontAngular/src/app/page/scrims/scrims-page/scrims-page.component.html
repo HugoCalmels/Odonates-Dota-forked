@@ -1,0 +1,21 @@
+<div class="page-header-custom">
+  <div class="bg-image__custom"></div>
+  <div class="bg-background__custom"></div>
+  <app-page-hero [pageTitle]="'UPCOMING SCRIMS'"></app-page-hero>
+  <ng-container *ngIf="alert$ | async as alert">
+    <app-custom-alert *ngIf="alert.isVisible" [alertType]="alert.alertType" [message]="alert.message"
+      (close)="alert.isVisible = false">
+    </app-custom-alert>
+  </ng-container>
+
+  <div class="page-content">
+    <div class="scrims-wrapper">
+      <div class="create-scrim-custom-btn-container">
+        <button (click)="tryToCreateScrim()" class="create-scrim-custom-btn" [disabled]="isAuthenticated === undefined">
+          <mat-icon class="add-icon">add</mat-icon>
+        </button>
+      </div>
+      <app-scrim-list class="app-scrim-list"></app-scrim-list>
+    </div>
+  </div>
+</div>

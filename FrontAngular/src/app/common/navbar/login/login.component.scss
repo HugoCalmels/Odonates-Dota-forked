@@ -1,0 +1,37 @@
+@import '../../../../variables.scss';
+
+.nav-link.log{
+  cursor: pointer;
+  transition: .1s;
+  border: 1px solid rgba(250, 250, 250, .25);
+  border-radius: 6px;
+  padding: 8px 12px!important;
+  color: white !important;
+  opacity: 0.75!important;
+  display:flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+              0 2px 4px rgba(0, 0, 0, 0.05);     
+}
+.nav-link.log:hover{
+  background-color: rgba(95,88,52,.5);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 
+              0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-login-icon{
+  width: 20px;
+  height:20px;
+  display:flex;
+  align-items: center;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.navbar-user-avatar{
+  height: 24px;
+  width: 24px;
+  border: 1px solid rgba(250, 250, 250, .25);
+}
+

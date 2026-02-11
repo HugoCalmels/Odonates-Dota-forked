@@ -1,0 +1,20 @@
+<div class="proposal-details-container">
+  <div class="proposal-team-details">
+    <img [src]="proposal.proposerTeam.logo" alt="Team Logo" class="team-logo">
+    <h5 class="team-name" (click)="navigateToTeamDetail(proposal.proposerTeam.name)">{{ proposal.proposerTeam.name }}
+    </h5>
+  </div>
+  <div class="proposal-players-details">
+    <div *ngFor="let user of displayedUsers" class="player-details">
+      <img [src]="user.avatar" alt="Player Avatar" class="player-avatar">
+      <p class="player-name">
+        {{ user.userName }} 
+        <span class="player-rank">{{ user.rankTier }}</span>
+        <span *ngIf="isCaptain(user)" >
+          <img src="../assets/img/crown.png" alt="Captain Badge" class="captain-badge">
+        </span>
+      </p>
+
+    </div>
+  </div>
+</div>

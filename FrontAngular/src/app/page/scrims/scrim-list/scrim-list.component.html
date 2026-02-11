@@ -1,0 +1,73 @@
+<table mat-table [dataSource]="dataSource" matSort matSortMult (matSortChange)="sortData($event)"
+  class="mat-elevation-z8">
+
+  <!-- Start Date Time Column -->
+  <ng-container matColumnDef="startDateTime">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Start time</th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element && element.startDateTime">
+        {{ element.startDateTime | dateTimeFormat }}
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Game Mode Column -->
+  <ng-container matColumnDef="gameMode">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Game Mode</th>
+    <td mat-cell *matCellDef="let element">{{ element.gameMode | gameModeFormat }}</td>
+  </ng-container>
+
+  <!-- First Team Column -->
+  <ng-container matColumnDef="firstScrimTeam">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Team 1</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="scrim-list-team-entity" *ngIf="element && element.firstScrimTeam && element.firstScrimTeam.team">
+        <img class="team-list-logo" *ngIf="element.firstScrimTeam.team.logo" [src]="element.firstScrimTeam.team.logo"
+          alt="Logo">
+        <p>
+          {{ element.firstScrimTeam.team.name }}
+          <ng-container *ngIf="element.firstScrimTeam && element.firstScrimTeam.users">
+            ({{ addCaptainToUsers(element.firstScrimTeam.users, element.firstScrimTeam.captain) | mmrAverage }})
+          </ng-container>
+
+        </p>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Second Team Column -->
+  <ng-container matColumnDef="secondScrimTeam">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Team 2</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="scrim-list-team-entity" *ngIf="element && element.secondScrimTeam && element.secondScrimTeam.team">
+        <img class="team-list-logo" *ngIf="element.secondScrimTeam.team.logo" [src]="element.secondScrimTeam.team.logo"
+          alt="Logo">
+        <p>
+          {{ element.secondScrimTeam.team.name }}
+          <ng-container *ngIf="element.secondScrimTeam && element.secondScrimTeam.users">
+            ({{ addCaptainToUsers(element.secondScrimTeam.users, element.secondScrimTeam.captain) | mmrAverage }})
+          </ng-container>
+
+        </p>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Pre Game Status-->
+  <ng-container matColumnDef="preGameStatus">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="preGameStatus-info joinable" *ngIf="isJoinable(element)">
+        <p>{{element.preGameStatus}}</p>
+      </div>
+      <div class="preGameStatus-info full" *ngIf="!isJoinable(element)">
+        <p>{{element.preGameStatus}}</p>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let scrim; columns: displayedColumns;" class="clickable-row"
+    (click)="navigateToScrimDetail(scrim)">
+  </tr>
+</table>

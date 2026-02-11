@@ -1,0 +1,15 @@
+<footer class="footer footer-black">
+  <div class="container">
+    <div class="row">
+      <div>
+        <h3 [routerLink]="['/home']">Squirrel Arena</h3>
+      </div>
+      <div>
+        <span class="copyright">
+          © {{data | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by PallaFed
+          <span class="cgu-link" (click)="openCguModal()"> | Terms and Conditions</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,286 @@
+@import '../../../../variables.scss';
+
+.scrim-details-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrim-details-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.scrim-details-registered-teams {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 150px;
+}
+
+.scrim-details-options-and-infos-wrapper {
+  flex: 1;
+  height: 100%;
+  margin-left: 30px;
+}
+
+.scrim-details-options-and-infos {
+  padding: 15px 15px;
+  background-color: $primary-color;
+  opacity: .95;
+}
+
+.scrim-details__options-buttons {
+  position: relative;
+  margin-bottom: 15px;
+  min-height: 50px;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.scrim-details__game-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0px 15px;
+  height: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.scrim-details__game-status {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0px 15px;
+  height: 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  border: 2px solid $primary-color;
+}
+
+.scrim-details__game-status.not-started {
+  background-color: $alert-warning;
+}
+.scrim-details__game-status.ready {
+  background-color: $alert-ready;
+}
+.scrim-details__game-status.started {
+  background-color: $alert-success;
+}
+.scrim-details__game-status.finished {
+  background-color: $grey-900;
+}
+
+.scrim-details__game-status p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.scrim-details-admin {
+  margin-top: 30px;
+}
+
+.post-scrim-options {
+  border: 2px solid black;
+  margin-top: 30px;
+}
+
+.bg-image__custom {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/bg-image-9.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-background__custom{
+  position: absolute;
+  top: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background-color: #062038;
+}
+
+.scrim-details-pre-match-sheet h5 {
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.scrim-details-pre-match-sheet p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.scrim-details-pre-match-sheet-group {
+  background: white;
+  padding: 10px 10px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scrim-details-header {
+  height: 50px;
+}
+
+.scrim-details-proposal-list h3{
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.scrim-details-proposal-list-wrapper{
+  background: white;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.proposal-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+.proposal-container p{
+  margin: 0;
+  font-weight: 500;
+}
+
+.proposal-btn{
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  border-radius: 3px;
+  transition: .1s;
+  text-decoration: none;
+}
+
+.proposal-btn:hover{
+  text-decoration: underline;
+}
+
+.proposal-btn.accept{
+  background-color: $alert-success;
+  margin-right: 10px;
+}
+
+.proposal-btn.reject{
+  background-color: $alert-warning;
+}
+
+#proposal-no-template{
+  margin:0;
+  margin-bottom: -5px;
+}
+
+.proposal-team-name{
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.proposal-team-name:hover{
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.scrim-details-match-sheet-infos-container{
+  margin-top: 10px;
+}
+
+.scrim-details-match-sheet-infos-container ul{
+padding: 0;
+  margin-top:5px;
+  list-style-type: none;
+  margin-bottom: 0px;
+  display:flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scrim-details-match-sheet-infos-container li{
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.scrim-details-match-sheet-infos-container p{
+  margin: 0;
+  font-size: 14px;
+}
+
+#scrim-details-match-sheet-infos{
+  font-style: italic;
+  margin-top: 5px;
+}
+
+
+
+.scrim-details__options-buttons button{
+  background-color: $primary-color-light;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  transition: 0.1s;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.scrim-details__options-buttons button:hover{
+  background-color: $primary-hover-color
+}
+
+#scrim-details-lobby-name-password-info{
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.scrim-details-pre-match-sheet-group h6{
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 15px;
+
+}
+.highlighted {
+  font-weight: bold!important;
+  text-decoration: underline;
+}

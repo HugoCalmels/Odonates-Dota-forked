@@ -1,0 +1,66 @@
+<nav #nav class="navbar navbar-expand-lg fixed-top navbar-light" [ngClass]="getNavbarWrapperClasses()"
+     [ngStyle]="backgroundColor">
+  <div class="container">
+    <div class="navbar-translate">
+      <div class="navbar-header">
+        <img [routerLink]="['/home']" class="img media-area-small nav-pointer" src="assets/img/squirrel.png" alt="Squirrel Logo">
+        <a class="navbar-brand" [routerLink]="['/home']" [ngStyle]="textColor">Squirrel Arena</a>
+      </div>
+      <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+
+        <!-- Début de la section Lobby Almost Sauvages -->
+            <!--
+        <li class="nav-item dropdown"
+            ngbDropdown #lobbyDropdown="ngbDropdown"
+            (mouseenter)="toggleDropdown(true, 'lobbyDropdown')"
+            (mouseleave)="toggleDropdown(false, 'lobbyDropdown')">
+          <a aria-expanded="false" aria-haspopup="true"
+             class="nav-link" href="/lobby-sauvage"
+             id="navbarDropdownMenuLink"
+             ngbDropdownToggle [ngStyle]="textColor">
+            Lobby Almost Sauvages
+          </a>
+          <div aria-labelledby="navbarDropdownMenuLink"
+               ngbDropdownMenu class="dropdown-menu dropdown-shift-left custom-dropdown-menu">
+            <a href="lobby-sauvage" class="dropdown-item">Lobby</a>
+            <a href="lobby-sauvage/leaderboard" class="dropdown-item">Leaderboard</a>
+          </div>
+        </li>
+          -->
+        <!-- Fin de la section Lobby Almost Sauvages -->
+
+        <li class="nav-item dropdown dropright"
+            ngbDropdown #scrimsDropdown="ngbDropdown"
+            (mouseenter)="toggleDropdown(true, 'scrimsDropdown')"
+            (mouseleave)="toggleDropdown(false, 'scrimsDropdown')"
+            placement="right-top">
+          <a class="nav-link" id="navbarDropdownMenuLink" href="/scrims"
+             ngbDropdownToggle [ngStyle]="textColor">
+            Scrims
+          </a>
+          <div class="dropdown-menu dropdown-menu-right custom-dropdown-menu"
+               aria-labelledby="navbarDropdownMenuLink" ngbDropdownMenu>
+            <a class="dropdown-item" routerLink="/scrims">Upcoming Scrims</a>
+            <a class="dropdown-item" routerLink="/scrims/history">Scrims History</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/teams']" [ngStyle]="textColor">Teams</a>
+        </li>
+
+        <li class="nav-item login">
+          <app-login [textColor]="textColor"></app-login>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

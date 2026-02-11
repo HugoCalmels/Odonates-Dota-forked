@@ -1,0 +1,9 @@
+ALTER TABLE app_user
+ADD COLUMN user_order INT,
+ADD COLUMN profile_url VARCHAR(255);
+
+ALTER TABLE team
+ADD COLUMN acronym VARCHAR(20);
+
+ALTER TABLE team
+ADD COLUMN "status" VARCHAR(20);

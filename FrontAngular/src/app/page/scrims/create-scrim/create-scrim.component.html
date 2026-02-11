@@ -1,0 +1,76 @@
+<div class="scrim-form-container">
+  <form [formGroup]="scrimForm" (ngSubmit)="onSubmit()" class="create-scrim-form" id="create-scrim-form">
+    <div class="cs-match-options">
+      <h5>Match Options</h5>
+      <mat-form-field class="create-scrim-form__field custom-mat-input" appearance="fill">
+        <mat-label class="create-scrim-form__label">Game Mode</mat-label>
+        <mat-select formControlName="gameMode" class="create-scrim-form__select">
+          <mat-option *ngFor="let mode of gameModes" [value]="mode" class="create-scrim-form__option">
+            {{ mode | gameModeFormat }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="isControlInvalid('gameMode')" class="custom-error-border cs-match-options"></div>
+    </div>
+
+    <div class="cs-players-selection-container">
+      <h5>Players Selection</h5>
+      <div class="cs-players-selection-content">
+        <div *ngIf="currentUser" class="current-user-selection">
+          <label class="player-label">
+            <mat-checkbox [checked]="true" color="primary" [disableRipple]="true" disabled class="cs-custom-checkbox"
+              id="specialCheckbox">
+
+              <img [src]="currentUser.avatar" alt="{{ currentUser.userName }}" class="player-avatar">
+              {{ currentUser.userName }}
+
+            </mat-checkbox>
+          </label>
+        </div>
+        <ng-container *ngIf="isSelectPlayersVisible()" @fadeInOut>
+          <div *ngFor="let player of filteredUsers" [ngClass]="{'hidden': player.id === currentUser?.id}">
+            <label class="player-label">
+              <mat-checkbox #checkbox [checked]="false" color="primary" [disableRipple]="true"
+                (change)="onPlayerSelectionChange($event, player)" class="cs-custom-checkbox resettable-checkbox">
+
+                <img [src]="player.avatar" alt="{{ player.userName }}" class="player-avatar">
+                {{ player.userName }}
+
+              </mat-checkbox>
+            </label>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="cs-player-selection-state" *ngIf="isSelectPlayersVisible()">
+      <p *ngIf="selectedPlayersControl.hasError('incorrectNumber')" id="cs-error-message">Select {{
+        getMissingPlayersCountMessage() }} more Players</p>
+      <p *ngIf="!selectedPlayersControl.hasError('incorrectNumber')" id="cs-no-error">All Players Selected</p>
+    </div>
+
+    <div class="cs-start-date-time">
+      <h5>Match start date and time</h5>
+      <div class="cs-date-wrapper">
+        <mat-form-field appearance="fill" class="create-scrim-form__field">
+          <mat-label class="create-scrim-form__label">Start Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="startDate" placeholder="Choose a date"
+            [matDatepickerFilter]="dateFilter" class="create-scrim-form__input">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker class="cs-date-picker-field"></mat-datepicker>
+        </mat-form-field>
+        <div *ngIf="isControlInvalid('startDate')" class="custom-error-border cs-match-options"></div>
+      </div>
+
+      <div class="cs-time-wrapper">
+        <mat-form-field appearance="fill" class="create-scrim-form__field">
+          <mat-label class="create-scrim-form__label">Start Time</mat-label>
+          <input matInput type="time" formControlName="startTime" placeholder="Choose a time"
+            class="create-scrim-form__input">
+        </mat-form-field>
+        <div *ngIf="isControlInvalid('startTime')" class="custom-error-border cs-match-options"></div>
+      </div>
+    </div>
+
+    <button type="submit" class="create-scrim-form__button" [disabled]="isSubmitting">CREATE</button>
+  </form>
+</div>

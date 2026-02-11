@@ -1,0 +1,262 @@
+@import '../../../../variables.scss';
+
+table {
+  width: 100%;
+  background-color: $primary-color-light;
+  opacity: .95;
+  color: white;
+}
+
+table th,
+td {
+  color: white;
+  height: 60px;
+}
+
+.team-list{
+  padding: 0;
+}
+
+.team-entity img{
+  height: 50px;
+  width: 50px;
+}
+
+.team-entity p{
+  margin: 10px;
+}
+
+.team-search {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  flex-direction: row;
+}
+
+.searchbar-container{
+  margin-bottom: 15px;
+  position: relative;
+  margin-right: 30px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.team-search input{
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 3px;
+  border : none;
+  outline: none;
+  transition: .1s;
+  background-color: $primary-color;
+  color: white;
+  padding-left: 40px;
+}
+
+.team-search input:focus{
+  background-color:$primary-hover-color ;
+}
+
+.team-search input::placeholder{
+  color: rgb(255, 255, 255,.5); 
+}
+
+.team-list-logo{
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.team-creation-button{
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-color;
+  opacity: 0.95;
+  cursor:pointer;
+  transition: .1s;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
+.team-creation-button:hover{
+  background-color: $primary-hover-color;
+}
+
+.add-icon{
+  color: white;
+  transform: scale(1.15);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-creation-button button{
+  background-color: $primary-color-light;
+  font: inherit;
+  color: white;
+  cursor: pointer;
+  outline: inherit;
+  border: none;
+  padding: 5px 15px;
+  transition: .1s;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 9;
+  border-radius: 3px;
+  line-height: 1.6;
+  opacity: 0.95;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.team-creation-button button:hover{
+  background-color: $primary-hover-color;
+}
+
+.bg-image__custom {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/bg-image-10.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: #423E2A;
+}
+
+mat-paginator {
+  color: white;
+  background-color: $primary-color !important;
+  opacity: 0.95;
+  margin-bottom: 150px;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-container, ::ng-deep .team-list .mat-mdc-paginator {
+  background-color: $primary-color;
+  opacity: 0.95;
+}
+
+::ng-deep .team-list .mat-mdc-select-value-text {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-navigation-button {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-icon {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator {
+  border-color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-page-size-select,
+::ng-deep .team-list .mat-mdc-form-field-infix,
+::ng-deep .team-list .mdc-select {
+  border-color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-navigation-next,
+::ng-deep .team-list .mat-mdc-paginator-navigation-previous,
+::ng-deep .team-list .mat-mdc-paginator-navigation-last,
+::ng-deep .team-list .mat-mdc-paginator-navigation-first {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-header-cell {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-cell {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-range-label,
+::ng-deep .team-list .mat-mdc-paginator-page-size-label,
+::ng-deep .team-list .mat-mdc-paginator-page-size-select {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-form-field-infix {
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-select-arrow {
+  color: white !important;
+}
+
+::ng-deep .team-list .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+::ng-deep .team-list .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+::ng-deep .team-list .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing{
+  border-color: white !important;
+  border-width: 1px !important;
+}
+
+::ng-deep .team-list .mat-mdc-option:hover,
+::ng-deep .team-list .mat-mdc-option.mat-active,
+::ng-deep .team-list .mat-mdc-option:focus,
+::ng-deep .team-list .mat-mdc-option:focus:hover {
+  background-color: $primary-hover-color !important;
+  opacity: .95;
+  color: $primary-color !important;
+}
+
+::ng-deep .team-list .mat-mdc-option{
+  background-color: $primary-color !important;
+  opacity: .95;
+  color: white;
+}
+
+::ng-deep .team-list .mat-mdc-select-panel{
+  background-color: $primary-color !important;
+}
+
+::ng-deep .team-list .mdc-list-item__primary-text{
+  font-size: 14px !important;
+  color: white !important;
+}
+
+::ng-deep .team-list .mat-mdc-paginator-navigation-next .mat-mdc-paginator-icon,
+::ng-deep .team-list .mat-mdc-paginator-navigation-previous .mat-mdc-paginator-icon, 
+::ng-deep .team-list .mat-mdc-paginator-navigation-first .mat-mdc-paginator-icon,
+::ng-deep .team-list .mat-mdc-paginator-navigation-last .mat-mdc-paginator-icon{
+  fill: white !important;
+} 
+

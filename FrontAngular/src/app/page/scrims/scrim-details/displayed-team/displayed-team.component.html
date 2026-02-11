@@ -1,0 +1,52 @@
+<div class="displayed-team-container">
+  <div class="displayed-team-header">
+    <div class="displayed-team-logo">
+      <img [src]="scrimTeam.team.logo" alt="Logo">
+    </div>
+    <h5 (click)="navigateToTeamDetail(scrimTeam.team.name)">{{ scrimTeam.team.name }}</h5>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Logo Column -->
+    <ng-container matColumnDef="avatar">
+      <th mat-header-cell *matHeaderCellDef class="displayed-team__label-1"></th>
+      <td mat-cell *matCellDef="let element">
+        <div class="displayed-user-logo">
+          <img [src]="element.avatar" alt="Logo">
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element" class="mat-column-userName">
+        <span>{{ element.userName }}</span>
+        <ng-container *ngIf="isCaptain(element)">
+          <img src="../assets/img/crown.png" alt="Captain Badge" class="captain-badge">
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <!-- MMR Column -->
+    <ng-container matColumnDef="MMR">
+      <th mat-header-cell *matHeaderCellDef> MMR </th>
+      <td mat-cell *matCellDef="let element" class="mat-column-mmr">
+        {{element.rankTier | mmrEstimate}}
+      </td>
+    </ng-container>
+
+    <!-- Steam Profile Column -->
+    <ng-container matColumnDef="steamProfile">
+      <th mat-header-cell *matHeaderCellDef> Profile </th>
+      <td mat-cell *matCellDef="let element" class="mat-column-steamLink">
+        <a href="{{element.profileUrl}}" target="_blank" class="steam-logo__collection">
+          <mat-icon svgIcon="steam-logo"></mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="clickable-header__team"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="clickable-row__team"></tr>
+  </table>
+</div>

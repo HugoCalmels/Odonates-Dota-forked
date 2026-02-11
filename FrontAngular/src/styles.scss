@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Ces div sont utilisées 2 fois ( teamlist-page && team-page ) */
+/* Donc c'est du css global, donc je le range ici pour l'instant */
+
+.page-content{ 
+  position:relative;
+  z-index: 10;
+  box-sizing: border-box;
+  margin-top: 200px;
+  min-height: calc(100vh - 80px);
+  height: auto;
+  width: 90vw;
+  max-width: 1152px;
+  display: flex;
+  flex-direction: column;
+}
+.page-header-custom{
+  min-height: calc( 100vh - 80px);
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+.page-lobby-sauvages{
+  display: flex;
+  flex-direction: column;
+}

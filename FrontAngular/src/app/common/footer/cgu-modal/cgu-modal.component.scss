@@ -1,0 +1,51 @@
+@import '../../../../variables.scss';
+
+.cgu-container{
+  background-color: $primary-color;
+  padding: 30px;
+  position: relative;
+}
+
+.cgu-container h1{
+color: white;
+margin:0;
+font-size: 2rem;
+margin-bottom: 30px;
+font-weight: 500;
+}
+.cgu-container h6{
+  color: white;
+  margin:0;
+  margin-bottom: 10px;
+}
+.cgu-container p{
+  color: white;
+  margin:0;
+  margin-bottom: 20px;
+}
+
+.cgu-container ul{
+  color: white;
+  margin:0;
+  margin-bottom: 20px;
+}
+
+.cgu-container li{
+  color: white;
+}
+
+.close-button {
+  position: absolute; 
+  top: 30px; 
+  right: 30px; 
+  background: transparent; 
+  border: none; 
+  color: white; 
+  font-size: 20px; 
+  cursor: pointer; 
+  z-index: 1000; 
+}
+
+#minus-spe{
+  margin-bottom: 5px;
+}

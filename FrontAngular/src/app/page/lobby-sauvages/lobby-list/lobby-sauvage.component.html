@@ -1,0 +1,72 @@
+<!-- Lobby Sauvage Component Template -->
+<div class="page-header-custom">
+  <div class="bg-image__custom"></div>
+  <div class="bg-background__custom"></div>
+  <app-page-hero [pageTitle]="'LOBBY ALMOST SAUVAGES'"></app-page-hero>
+
+  <div class="page-content">
+    <div *ngIf="isAuthenticated; else loginTemplate" class="page-lobby-sauvages">
+      <button (click)="tryToCreateLobby()" class="create-lobby-sauvage-btn">
+        <mat-icon class="add-icon">add</mat-icon>
+      </button>
+
+      <div class="col-md-12 ml-auto mr-auto">
+        <div class="savage-lobby-list-header">
+          <h2 class="title text-custom">
+            Available Lobbies :
+          </h2>
+        </div>
+
+        <br />
+
+        <div *ngIf="(lobbies || []).length > 0; else noLobbiesTemplate">
+          <div *ngFor="let lobby of lobbies" class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card">
+                <img
+                  alt="Card image cap"
+                  class="card-img-top"
+                  [ngSrc]="imageUrl"
+                  height="180"
+                  width="320"
+                />
+                <div class="card-body">
+                  <h4 class="card-title">{{ lobby.lobbyName }}</h4>
+                  <p class="card-text">Player count : {{ lobby.users.length }}/10</p>
+                  <p class="card-text">{{ getUsersNamesList(lobby.users) }}</p>
+                  <a
+                    class="btn btn-primary"
+                    (click)="joinLobby(lobby)"
+                    [routerLink]="['/lobby-sauvage', lobby.id]"
+                    >Join Lobby</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #noLobbiesTemplate>
+          <div class="text-center">
+            <p style="font-weight: bold; text-decoration: underline; color: black;">
+              No lobbies available at the moment.
+            </p>
+            <button class="savage-lobby-create-btn" (click)="tryToCreateLobby()">
+              Create New Lobby
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <ng-template #loginTemplate>
+      <div class="alert-wrapper">
+        <app-custom-alert
+          [alertType]="'error'"
+          [message]="'Please login to access the lobbies.'"
+        >
+        </app-custom-alert>
+      </div>
+    </ng-template>
+  </div>
+</div>

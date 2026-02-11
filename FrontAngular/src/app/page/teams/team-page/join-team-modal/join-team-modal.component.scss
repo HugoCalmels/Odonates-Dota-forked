@@ -1,0 +1,52 @@
+@import '../../../../../variables.scss';
+
+.join-team-modal-wrapper{
+  background-color: $primary-color-light;
+  padding: 30px;
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.join-team-modal-wrapper h5{
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.join-team-modal-wrapper p{
+  margin: 0;
+  color: white;
+}
+
+.join-team-modal-wrapper input{
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  font-weight: 600;
+  border-radius: 3px;
+}
+
+.join-team-modal-wrapper button{
+  font-weight: 600;
+  background-color: $primary-color;
+  transition: .1s;
+  padding: 10px 0;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.join-team-modal-wrapper button:hover{
+  background-color: $primary-hover-color;
+}
+
+#join-team-modal-error-message{
+  color: $alert-error;
+  font-weight: 500;
+}

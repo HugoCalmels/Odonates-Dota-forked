@@ -1,0 +1,9 @@
+ALTER TABLE app_user
+ADD COLUMN steam_id64bits VARCHAR(255),
+ADD COLUMN steam_id32bits VARCHAR(255),
+ADD COLUMN rank_tier INT,
+ADD COLUMN avatar VARCHAR(255),
+ADD COLUMN last_edit TIMESTAMP,
+ADD COLUMN roles VARCHAR(255)[],
+DROP COLUMN email,
+DROP COLUMN password;

@@ -1,0 +1,51 @@
+@import '../../../../../variables.scss';
+
+.team-infos-wrapper{
+  padding: 0;
+}
+
+.team-infos-wrapper h5{
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.team-info-text{
+  padding: 10px;
+  background-color: white;
+  border-radius: 3px;
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.team-info-text p{
+  margin: 0;
+  font-weight: 500;
+}
+
+.team-password-params{
+  padding: 0;
+}
+
+.team-password-params h5{
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.team-password{
+  padding: 10px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.team-password p{
+  margin: 0;
+  font-weight: 500;
+}

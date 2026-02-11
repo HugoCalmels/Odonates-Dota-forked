@@ -1,0 +1,38 @@
+<div class="players-selection-container">
+  <form [formGroup]="playerSelectionForm" (ngSubmit)="confirmSelection()" class="ps-form">
+    <div *ngIf="isSelectPlayersVisible()" class="ps-players-selection-container">
+      <h5>Players Selection</h5>
+      <div class="ps-players-selection-content">
+        <div *ngIf="currentUser" class="current-user-selection">
+          <label class="player-label">
+            <mat-checkbox [checked]="true" color="primary" [disableRipple]="true" disabled class="ps-custom-checkbox"
+              id="specialCheckbox">
+              <img [src]="currentUser.avatar" alt="{{ currentUser.userName }}" class="player-avatar">
+              {{ currentUser.userName }}
+            </mat-checkbox>
+          </label>
+        </div>
+        <ng-container *ngIf="hasMultipleUsersInFirstTeam()">
+          <div *ngFor="let player of filteredUsers">
+            <label class="player-label">
+              <mat-checkbox [checked]="selectedPlayersControl.value?.includes(player)" color="primary"
+                (change)="onPlayerSelectionChange($event, player)" class="ps-custom-checkbox">
+                <img [src]="player.avatar" alt="{{ player.userName }}" class="player-avatar">
+                {{ player.userName }}
+              </mat-checkbox>
+            </label>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="ps-player-selection-state" *ngIf="isSelectPlayersVisible()">
+      <p *ngIf="selectedPlayersControl.hasError('incorrectNumber')" id="ps-error-message">
+        Select {{ getMissingPlayersCountMessage() }} more Players
+      </p>
+      <p *ngIf="!selectedPlayersControl.hasError('incorrectNumber')" id="ps-no-error">All Players Selected</p>
+    </div>
+    <div class="ps-button-wrapper">
+      <button type="submit" class="ps-form__button">CONFIRM</button>
+    </div>
+  </form>
+</div>

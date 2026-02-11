@@ -1,0 +1,51 @@
+<div class="page-header-custom">
+  <div class="bg-image__custom"></div>
+  <div class="bg-background__custom"></div>
+  <app-page-hero [pageTitle]="'LOBBY ALMOST SAUVAGES'"></app-page-hero>
+  
+  <div class="page-content">
+    <div class="page-lobby-sauvages" *ngIf="lobby">
+      <div class="col-md-12 ml-auto mr-auto">
+        <div class="savage-lobby-details-header">
+          <h2>{{ lobby.lobbyName }}</h2>
+          
+          <div class="savage-lobby-details-infos">
+            <div class="savage-lobby-details-col">
+              <mat-icon class="sl-icon">info</mat-icon>
+              <p>{{ lobby.status }}</p>
+            </div>
+            <div class="savage-lobby-details-col">
+              <mat-icon class="sl-icon">person</mat-icon>
+              <p>{{ lobby.users.length }}/10</p>
+            </div>
+          </div>
+          
+          <div class="savage-lobby-leave-btn-wrapper">
+            <button class="savage-lobby-leave-btn" (click)="leaveTheLobby()">
+              Leave the lobby
+            </button>
+          </div>
+        </div>
+        
+        <br />
+        
+        <div>
+          <div class="row align-content-center">
+            <div *ngFor="let user of lobby.users | slice:0:10; let i = index" class="col-md-3">
+              <div class="card">
+                <div class="card-header-custom">
+                  <img class="sl-user-img" [src]="user.avatar" alt="Logo" />
+                  <h5># {{ i + 1 }}</h5>
+                </div>
+                <div class="card-body-custom">
+                  <h5>{{ user.userName }} {{ user.rankTier  }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

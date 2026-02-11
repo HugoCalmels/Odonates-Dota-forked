@@ -1,0 +1,140 @@
+<div class="page-header-custom">
+  <div class="bg-image__custom"></div>
+  <div class="bg-background__custom">
+    <div class="bg-background__gradiant"></div>
+  </div>
+
+  <ng-container *ngIf="scrim$ | async as scrim; else noScrim">
+    <app-page-hero [pageTitle]="'Scrim : ' + (scrim.gameMode | gameModeFormat)"></app-page-hero>
+  </ng-container>
+  
+  <ng-template #noScrim>
+    <ng-container *ngIf="alert$ | async as alert">
+      <app-page-hero [pageTitle]="'Scrim not found'"></app-page-hero>
+      <app-custom-alert *ngIf="alert.isVisible"
+                        [alertType]="alert.alertType"
+                        [message]="alert.message"
+                        (close)="alert.isVisible = false">
+      </app-custom-alert>
+    </ng-container>
+  </ng-template>
+
+  <ng-container *ngIf="scrim$ | async as scrim">
+    <div class="page-content">
+      <div class="scrim-details-wrapper">
+        <div class="scrim-details-header">
+          <div class="scrim-details__options-buttons">
+            <ng-container *ngIf="scrim.id">
+
+              <ng-container *ngIf="isNotStarted(scrim)">
+
+                <ng-container *ngIf="!isAuthenticated ">
+                  <button (click)="redirectToLogin()">Send Scrim Proposal</button>
+                </ng-container>
+                <ng-container *ngIf="userStatus$ | async as userStatus">
+                  <ng-container *ngIf="userStatus.canJoinScrim && !userStatus.hasAlreadySentProposal">
+                    <button (click)="openPlayerSelectionModal()">Send Scrim Proposal</button>
+                  </ng-container>
+                  <ng-container *ngIf="userStatus.canJoinScrim && userStatus.hasAlreadySentProposal">
+                    <button (click)="cancelScrimProposal()">Cancel Scrim Proposal</button>
+                  </ng-container>
+                  <ng-container *ngIf="userStatus.canCancelScrim">
+                    <button (click)="cancelScrim()">Cancel Scrim</button>
+                  </ng-container>
+                  <ng-container *ngIf="userStatus.canDeleteScrim && !gameIsFull(scrim)">
+                    <button (click)="openDeleteModal(scrim.id)">Delete Scrim</button>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div *ngIf="scrim.gameStatus" class="scrim-details__game-status" [ngClass]="{
+            'not-started': scrim.gameStatus === 'NOT_STARTED',
+            'started': scrim.gameStatus === 'STARTED',
+            'ready': scrim.gameStatus === 'READY',
+            'finished': scrim.gameStatus === 'FINISHED',
+          }">
+            <p>{{ scrim.gameStatus }}</p>
+          </div>
+        </div>
+        <div class="scrim-details-content">
+          <div class="scrim-details-registered-teams">
+            <ng-container *ngIf="scrim.firstScrimTeam">
+              <app-displayed-team [scrimTeam]="scrim.firstScrimTeam"></app-displayed-team>
+            </ng-container>
+            <ng-container *ngIf="scrim.secondScrimTeam">
+              <app-displayed-team [scrimTeam]="scrim.secondScrimTeam"></app-displayed-team>
+            </ng-container>
+          </div>
+          <div class="scrim-details-options-and-infos-wrapper">
+            <div class="scrim-details-options-and-infos">
+              <div class="scrim-details-pre-match-sheet">
+                <h5>Match Sheet</h5>
+                <div class="scrim-details-pre-match-sheet-group">
+                  <h6>Match Informations :</h6>
+                  <p id="scrim-details-start"><span>Start :</span> {{ scrim.startDateTime | dateTimeFormat }}</p>
+                  <ng-container *ngIf="(userStatus$ | async) as userStatus">
+                    <ng-container *ngIf="userStatus && userStatus.alreadyTagged">
+                      <p><span>LobbyName : </span>{{scrim.lobbyName}}</p>
+                      <p><span>LobbyPassword :</span> {{scrim.lobbyPassword}}</p>
+                      <p id="scrim-details-lobby-name-password-info">Someone will have to create the lobby with the given LobbyName and LobbyPassword.</p>
+                    </ng-container>
+                  </ng-container>
+
+                  <div class="scrim-details-match-sheet-infos-container">
+                    <h6>Status Explainations :</h6>
+                    <div *ngIf="scrim$ | async as scrim">
+                      <ul>
+                        <li [ngClass]="{'highlighted': scrim.gameStatus === GameStatus.NOT_STARTED}">
+                          {{ GameStatus.NOT_STARTED }}
+                        </li>
+                        <li [ngClass]="{'highlighted': scrim.gameStatus === GameStatus.READY}">
+                          {{ GameStatus.READY }} ( 2x teams ready )
+                        </li>
+                        <li [ngClass]="{'highlighted': scrim.gameStatus === GameStatus.STARTED}">
+                          {{ GameStatus.STARTED }} ( h - 15 mins )
+                        </li>
+                        <li [ngClass]="{'highlighted': scrim.gameStatus === GameStatus.FINISHED}">
+                          {{ GameStatus.FINISHED }} ( h + 1 hour )
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scrim-details-proposal-list" *ngIf="!gameIsFull(scrim)">
+                <h3>Proposals</h3>
+                <div class="scrim-details-proposal-list-wrapper">
+                  <div *ngIf="scrim.proposals && scrim.proposals.length > 0; else noProposals">
+                    <div *ngFor="let proposal of scrim.proposals" class="proposal-container">
+                      <ng-container *ngIf="checkProposalStatus(proposal)">
+                        <p>
+                          <span (click)="openProposalDetailsModal(proposal)" class="proposal-team-name">
+                            {{ proposal.proposerTeam.name }}
+                          </span>
+                          <span> ({{ proposal.proposerScrimTeam.users | mmrAverage }})</span>
+                          wants to join.
+                        </p>
+                        <div *ngIf="checkIfTeamAdmin()">
+                          <button class="proposal-btn accept" (click)="acceptProposal(proposal)">Accept</button>
+                          <button class="proposal-btn reject" (click)="rejectProposal(proposal)">Reject</button>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <ng-template #noProposals>
+                    <p id="proposal-no-template">No proposals have been sent yet</p>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!(scrim$ | async)">
+    <p>Loading scrim details...</p>
+  </ng-container>
+</div>

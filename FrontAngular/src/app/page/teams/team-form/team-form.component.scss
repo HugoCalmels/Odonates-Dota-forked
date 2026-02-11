@@ -1,0 +1,160 @@
+@import '../../../../variables.scss';
+
+.team-form{
+  box-sizing: border-box;
+  margin: auto;
+  width: 80vw;
+  max-width: 400px;
+  background-color: $primary-color-light-2;
+  overflow-y: auto; 
+  padding: 30px;
+  border-radius: 5px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.form-custom-input {
+  position: absolute;
+  left: -9999px;
+}
+
+.form-custom-file-input-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+}
+
+.form-custom-label{
+  cursor: pointer;
+  padding: 0;
+  margin: 0 !important;
+  font-weight: 400 !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+  display:flex;
+  align-items: center;
+  font-size: 14px !important;
+}
+
+.team-form-header {
+  padding: 0 0 30px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.team-form-header h4{
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+}
+
+.team-form-header button{
+  border: none;
+  outline: none;
+  
+  display:flex;
+  align-items: center;
+  padding: 0;
+  background-color: $primary-color-light-2;
+}
+.team-form-header button .mat-icon{
+  background-color: $primary-color-light-2;
+  font-size: 24px;
+}
+
+.form-group {
+ padding-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: rgb(255, 255, 255, .75);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.form-control{
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  border-radius: 3px;
+  outline: none; 
+}
+
+.text-danger{
+  margin-top: 10px;
+}
+
+.form-control-small{
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: $alert-error;
+}
+
+.form-custom-file-input-wrapper button{
+  border:none;
+  outline: none;
+  background-color: $primary-color;
+  color: white;
+  border-radius: 3px;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+.form-custom-file-input-wrapper button:hover{
+  background-color: $primary-hover-color;
+}
+
+.create-team__send-btn{
+  width: 100%;
+  text-align: center;
+  background-color: $primary-color;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: .1s;
+  padding:10px 0;
+  border:none;
+  outline: none;
+  margin-top: 10px;
+  position: relative;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-team__send-btn:hover{
+  background-color: $primary-hover-color;
+}
+
+::ng-deep .mat-mdc-dialog-surface.mdc-dialog__surface{
+  border-radius: 5px;
+  background-color: $primary-color-light;
+}
+
+.spinner {
+
+  width: 50px;  /* Taille personnalisée du spinner */
+  height: 30px;
+  color: red; /* Couleur du spinner */
+}
+
+.custom-spinner ::ng-deep .mat-mdc-progress-spinner {
+   --mdc-circular-progress-active-indicator-color: rgb(199, 199, 197);
+}
+  
+.create-team__send-btn[disabled] {
+  background-color: $primary-color;
+  cursor: auto;
+}
